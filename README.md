@@ -1,4 +1,4 @@
-# CloudCafé ☕
+
 Full-stack Kubernetes project with:
 - Node.js backend (Express + MySQL)
 - Static frontend (nginx + HTML/CSS)
