@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudcafe-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cloudcafe-frontend
+  template:
+    metadata:
+      labels:
+        app: cloudcafe-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: mirzadevops379/cloudcafe-frontend:latest
+        ports:
+        - containerPort: 80

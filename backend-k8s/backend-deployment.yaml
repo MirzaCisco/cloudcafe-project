@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudcafe-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cloudcafe-backend
+  template:
+    metadata:
+      labels:
+        app: cloudcafe-backend
+    spec:
+      containers:
+      - name: backend
+        image: mirzadevops379/cloudcafe-backend:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MYSQL_HOST
+          value: mysql
+        - name: MYSQL_USER
+          value: root
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: root-password
+        - name: MYSQL_DATABASE
+          value: testdb
